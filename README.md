@@ -1,1 +1,1 @@
-# LayeredHybridIntelligentAgents
+# Hybrid Intelligent Agents
