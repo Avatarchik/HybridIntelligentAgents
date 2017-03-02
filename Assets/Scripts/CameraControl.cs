@@ -7,6 +7,7 @@ public class CameraControl : MonoBehaviour
   [SerializeField] private Vector2 m_MoveMax;
   private Vector3 m_LastMousePosition;
   private float m_Distance;
+  [SerializeField] private float m_ScrollMultiplier;
 
   private void Start()
   {
@@ -15,12 +16,11 @@ public class CameraControl : MonoBehaviour
 
   private void Update()
   {
-    var hit = default(RaycastHit);
     if (Input.GetMouseButtonDown(0)) {
-        m_LastMousePosition = Input.mousePosition;
+      m_LastMousePosition = Input.mousePosition;
     } else if (Input.GetMouseButton(0)) {
       var pos = Input.mousePosition;
-      var md = (m_LastMousePosition - pos) * m_Distance* 0.3f * Time.unscaledDeltaTime;
+      var md = (m_LastMousePosition - pos) * m_Distance * 0.3f * Time.unscaledDeltaTime;
       m_LastMousePosition = pos;
 
       var t = m_Target.position;
@@ -29,10 +29,10 @@ public class CameraControl : MonoBehaviour
       m_Target.position = t;
     }
 
-    m_Distance = Mathf.Clamp(m_Distance + Input.mouseScrollDelta.y * -m_Distance * 2.0f * Time.unscaledDeltaTime, 5.0f, 40.0f);
+    var scroll = m_Distance + Input.mouseScrollDelta.y * m_ScrollMultiplier * -m_Distance * Time.unscaledDeltaTime;
+    m_Distance = Mathf.Clamp(scroll, 5.0f, 40.0f);
 
     transform.position = m_Target.position + m_Target.forward * m_Distance;
     transform.LookAt(m_Target, Vector3.up);
   }
-
 }

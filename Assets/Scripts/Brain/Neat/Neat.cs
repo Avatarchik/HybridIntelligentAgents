@@ -4,11 +4,14 @@ namespace Brain.Neat
 {
   public class Neat
   {
-    public NeuralParameters Neural { get; private set; }
-    public MutationParameters Mutation { get; private set; }
-    public SpeciationParameters Speciation { get; private set; }
-    public ReproductionParameters Reproduction { get; private set; }
-    public StructureParameters Structure { get; private set; }
+    public int PopulationSize { get; set; }
+    public int InputCount { get; set; }
+    public int OutputCount { get; set; }
+    public NeuralParameters Neural { get; set; }
+    public MutationParameters Mutation { get; set; }
+    public SpeciationParameters Speciation { get; set; }
+    public ReproductionParameters Reproduction { get; set; }
+    public StructureParameters Structure { get; set; }
 
     public Neat()
     {
