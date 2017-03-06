@@ -7,6 +7,7 @@ namespace Brain.Neat
     public int PopulationSize { get; set; }
     public int InputCount { get; set; }
     public int OutputCount { get; set; }
+    public double MaxFitness { get; set; }
     public NeuralParameters Neural { get; set; }
     public MutationParameters Mutation { get; set; }
     public SpeciationParameters Speciation { get; set; }

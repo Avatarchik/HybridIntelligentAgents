@@ -1,8 +1,8 @@
 ﻿using System;
+using Brain;
 
 public class BoltzmannExplorationPolicy : IExplorationPolicy
 {
-  private Random _random;
   public double Temperature { get; set; }
 
   public BoltzmannExplorationPolicy(double temperature = 1.0)
@@ -35,7 +35,7 @@ public class BoltzmannExplorationPolicy : IExplorationPolicy
       return action;
     }
 
-    var r = _random.NextDouble();
+    var r = Utility.RandomDouble();
     var sum = 0.0;
 
     for (var i = 0; i < estimates.Length; i++) {

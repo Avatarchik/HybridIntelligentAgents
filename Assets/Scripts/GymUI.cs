@@ -8,8 +8,6 @@ public class GymUI : MonoBehaviour
   private Text m_GenerationText;
   [SerializeField]
   private Text m_FitnessText;
-  [SerializeField]
-  private Chart m_FitnessChart;
 
   public void OnStartLearningClick()
   {
@@ -20,8 +18,6 @@ public class GymUI : MonoBehaviour
   {
     //m_GenerationText.text = m_Gym.generation.ToString("N0");
     //m_FitnessText.text = string.Format("{0:0.00}", m_Gym.fitness);
-
-    //m_FitnessChart.AddValue((float)m_Gym.fitness);
   }
 
   public void OnChangeSpeed(Slider slider)

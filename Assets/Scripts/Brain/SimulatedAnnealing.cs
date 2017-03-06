@@ -1,7 +1,7 @@
 ﻿using System;
 using Brain;
 
-public class SimulatedAnnealing
+public class SimulatedAnnealing : ILearningMethod
 {
   private double _temperature;
   private readonly double _coolingRate;

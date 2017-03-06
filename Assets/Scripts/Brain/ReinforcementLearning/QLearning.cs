@@ -36,11 +36,13 @@ public class QLearning : IReinforcementLearning
   public int SelectedAction { get; private set; }
   public int StateCount { get; }
   public int ActionCount { get; }
+  public double Fitness { get; set; }
 
   public void Begin(int state)
   {
     CurrentState = state;
     SelectedAction = ExplorationPolicy.SelectAction(_q[CurrentState]);
+    Fitness = 0.0;
   }
 
   public void Step(double reward, int nextState)
@@ -59,5 +61,7 @@ public class QLearning : IReinforcementLearning
 
     CurrentState = nextState;
     SelectedAction = ExplorationPolicy.SelectAction(_q[CurrentState]);
+
+    Fitness += reward;
   }
 }

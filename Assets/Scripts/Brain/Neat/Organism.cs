@@ -24,6 +24,7 @@
     {
       _neat = neat;
       _body = body;
+      _body.Organism = this;
       Phenotype = phenotype;
       FitnessModifier = 1.0;
     }

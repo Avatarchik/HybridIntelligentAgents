@@ -2,13 +2,14 @@
 
 namespace Brain.Neat
 {
-  public class NeuroEvolution
+  public class NeuroEvolution : ILearningMethod
   {
     private IList<IBody> _bodies;
     private readonly Neat _neat;
     private readonly SpeciesManager _speciesManager;
 
     public int Generation { get; set; }
+    public Neat Neat { get { return _neat; } }
 
     public NeuroEvolution(Neat neat)
     {
@@ -34,6 +35,17 @@ namespace Brain.Neat
       Generation++;
 
       return _speciesManager.GetFittestOrganism();
+    }
+
+    public IList<Organism> GetOrganisms()
+    {
+      var organisms = new List<Organism>();
+
+      for (int i = 0; i < _speciesManager.SpeciesCount; i++) {
+        organisms.AddRange(_speciesManager.GetSpecies(i).population);
+      }
+
+      return organisms;
     }
 
     private void UpdateGeneration()

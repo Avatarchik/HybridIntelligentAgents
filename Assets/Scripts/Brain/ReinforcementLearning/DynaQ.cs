@@ -14,6 +14,7 @@ public class DynaQ : IReinforcementLearning
   public double LearningRate { get; set; }
   public double DiscountFactor { get; set; }
   public IExplorationPolicy ExplorationPolicy { get; set; }
+  public double Fitness { get; set; }
 
   public DynaQ(int stateCount, int actionCount, IExplorationPolicy explorationPolicy, int n = 5,
     double learningRate = 0.1, double discountFactor = 0.9, bool initializeRandom = false)
@@ -55,6 +56,7 @@ public class DynaQ : IReinforcementLearning
   {
     CurrentState = state;
     SelectedAction = ExplorationPolicy.SelectAction(_q[CurrentState]);
+    Fitness = 0.0;
   }
 
   public void Step(double reward, int nextState)
@@ -70,6 +72,8 @@ public class DynaQ : IReinforcementLearning
 
     CurrentState = nextState;
     SelectedAction = ExplorationPolicy.SelectAction(_q[CurrentState]);
+
+    Fitness += reward;
   }
 
   private void UpdateQ(double reward, int nextState)

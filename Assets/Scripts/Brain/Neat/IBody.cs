@@ -7,6 +7,7 @@
     bool HasFinished();
     double[] GetInputs();
 
+    Organism Organism { get; set; }
     int InputCount { get; }
     int OutputCount { get; }
     double Fitness { get; }

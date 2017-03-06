@@ -13,14 +13,25 @@ public class NeatParameters : LearningParameters
     Identity
   }
 
-  [SerializeField] private int m_PopulationSize;
   [SerializeField] private int m_InputCount;
   [SerializeField] private int m_OutputCount;
+  [SerializeField] private double m_MaxFitness;
   [SerializeField] private NeuralParameters m_Neural;
   [SerializeField] private MutationParameters m_Mutation;
   [SerializeField] private SpeciationParameters m_Speciation;
   [SerializeField] private ReproductionParameters m_Reproduction;
   [SerializeField] private StructureParameters m_Structure;
+
+  public NeatParameters()
+  {
+    m_Neural = new NeuralParameters();
+    m_Mutation = new MutationParameters();
+    m_Speciation = new SpeciationParameters();
+    m_Reproduction = new ReproductionParameters();
+    m_Structure = new StructureParameters();
+  }
+
+  public int populationSize { get; set; }
 
   public Neat ToNeat()
   {
@@ -40,9 +51,10 @@ public class NeatParameters : LearningParameters
     }
 
     return new Neat {
-      PopulationSize = m_PopulationSize,
+      PopulationSize = populationSize,
       InputCount = m_InputCount,
       OutputCount = m_OutputCount,
+      MaxFitness = m_MaxFitness,
       Neural = new Neat.NeuralParameters {
         ActivationFunction = af,
         MaxActivation = m_Neural.maxActivation,

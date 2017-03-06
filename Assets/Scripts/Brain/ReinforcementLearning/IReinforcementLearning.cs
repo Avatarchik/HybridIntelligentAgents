@@ -1,9 +1,10 @@
-﻿public interface IReinforcementLearning
+﻿public interface IReinforcementLearning : ILearningMethod
 {
   int StateCount { get; }
   int ActionCount { get; }
   int CurrentState { get; }
   int SelectedAction { get; }
+  double Fitness { get; }
 
   /// <summary>
   ///   Begin learning process.

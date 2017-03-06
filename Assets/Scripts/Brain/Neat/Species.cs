@@ -12,6 +12,8 @@ namespace Brain.Neat
     private bool _sorted;
     private int _stagnantGenerationCount;
 
+    public IList<Organism> population { get { return _population; } }
+
     public bool FinishedTask { get; private set; }
 
     public int Size
